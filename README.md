@@ -33,8 +33,33 @@
 
 ## 运行
 
+无惩罚原始网络
 ```
 python main.py --model vgg --data_name 'cifar10' --train 1 --prune 1
+```
+使用TPU训练
+```
+python main_tpu.py --model vgg --data_name 'cifar10' --train 1 --prune 1
+```
+L1稀疏惩罚
+```
+python main.py --model vgg --data_name 'cifar10' --train 1 --prune 1 --l1_value 0.0001
+```
+L2惩罚
+```
+python main.py --model vgg --data_name 'cifar10' --train 1 --prune 1 --l2_value 0.01
+```
+Group Lasso惩罚
+```
+python main.py --model vgg --data_name 'cifar10' --train 1 --prune 1 --gl_a 0.001
+```
+角相异惩罚（我们的）
+```
+python main.py --model='vgg'  --data_name='cifar10' --var_2 0.0001 --gl_a 0.001 --is_restore 1 --restore_path=trained_model/vgg/cifar10/_gl1_0.001_gl2_0.001_/
+```
+拟合解惩罚（我们的）
+```
+python main.py --model='vgg'  --data_name='cifar10' --prop_1 0.001
 ```
 
 - 模型（model）可选：```lenet, vgg, resnet```（默认为lenet5，vgg16，resnet18）
@@ -53,18 +78,18 @@ python main.py --model vgg --data_name 'cifar10' --train 1 --prune 1
     | store_weight = 0 | # 保存权重 |
     | is_restore = 0 | # 恢复权重 |
     | init_lr = 0.1 | # 学习率 |
-    | epochs = 10 | # 训练回合数 |
-    | batch_size = 250 | # 一个批次的数据大小 |
+    | epochs = 200 | # 训练回合数 |
+    | batch_size = 256 | # 一个批次的数据大小 |
     | threshold = 0.001 | # 权重剪枝阈值 |
     | penalty_ratio = 1.0 | # 角相异惩罚比例 |
-    | stop_acc = 0.992 | # 早停精度 |
+    | stop_acc = 0.992 | # 早停精度（暂时没用）  |
     | l1_value = 0.000 | # L1范数惩罚超参 |
     | l2_value = 0.00 | # L2范数惩罚超参 |
-    | gl_1 = 0.000 | # group lasso惩罚超参 |
-    | gl_2 = 0.000 | # group lasso惩罚超参 |
-    | gl_a = 0.000 | # group lasso惩罚超参（细分到每一个过滤器和通道） |
-    | var_1 = 0.0 | # 角相异惩罚超参 |
-    | var_2 = 0.0 | # 角相异惩罚超参 |
+    | gl_1 = 0.000 | # Group Lasso惩罚超参 |
+    | gl_2 = 0.000 | # Group Lasso惩罚超参 |
+    | gl_a = 0.000 | # Group Lasso惩罚超参（细分到每一个过滤器和通道） |
+    | var_1 = 0.0 | # 角相异惩罚超参（过滤器角） |
+    | var_2 = 0.0 | # 角相异惩罚超参（通道角） |
     | prop_1 = 0.000 | # 拟合解惩罚 |
     | prop_2 = 0.000 | # 拟合解惩罚（暂时没用） |
     | prop_a = 0.000 | # 拟合解惩罚（暂时没用） |
