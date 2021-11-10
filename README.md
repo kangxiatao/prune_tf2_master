@@ -35,31 +35,31 @@
 
 无惩罚原始网络
 ```
-python main.py --model vgg --data_name 'cifar10' --train 1 --prune 1
+python main.py --model vgg --data_name cifar10 --train 1 --prune 1
 ```
 使用TPU训练
 ```
-python main_tpu.py --model vgg --data_name 'cifar10' --train 1 --prune 1
+python main_tpu.py --model vgg --data_name cifar10 --train 1 --prune 1
 ```
 L1稀疏惩罚
 ```
-python main.py --model vgg --data_name 'cifar10' --train 1 --prune 1 --l1_value 0.0001
+python main.py --model vgg --data_name cifar10 --train 1 --prune 1 --l1_value 0.0001
 ```
 L2惩罚
 ```
-python main.py --model vgg --data_name 'cifar10' --train 1 --prune 1 --l2_value 0.01
+python main.py --model vgg --data_name cifar10 --train 1 --prune 1 --l2_value 0.01
 ```
 Group Lasso惩罚
 ```
-python main.py --model vgg --data_name 'cifar10' --train 1 --prune 1 --gl_a 0.001
+python main.py --model vgg --data_name cifar10 --train 1 --prune 1 --gl_a 0.001
 ```
 角相异惩罚（我们的）
 ```
-python main.py --model='vgg'  --data_name='cifar10' --var_2 0.0001 --gl_a 0.001 --is_restore 1 --restore_path=trained_model/vgg/cifar10/_gl1_0.001_gl2_0.001_/
+python main.py --model vgg --data_name cifar10 --var_2 0.0001 --gl_a 0.001 --is_restore 1 --restore_path=trained_model/vgg/cifar10/_gla_0.001_/
 ```
 拟合解惩罚（我们的）
 ```
-python main.py --model='vgg'  --data_name='cifar10' --prop_1 0.001
+python main.py --model vgg --data_name cifar10 --prop_1 0.001
 ```
 
 - 模型（model）可选：```lenet, vgg, resnet```（默认为lenet5，vgg16，resnet18）
