@@ -16,7 +16,7 @@
  - experiment文件夹中是测试程序和数据分析程序
  - models文件夹中包含lenet、resnet、vgg三个模型
  - train_model用于存放权重、评估信息等
- - utility自定义的辅组函数
+ - utility自定义的辅助函数
  - main.py and main_tpu.py 为主函数（对应在GPU or TPU运行）
  - mycallback.py 自定义回调
  - myparser.py 超参数设定相关
