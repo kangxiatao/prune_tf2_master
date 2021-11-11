@@ -38,7 +38,7 @@ def parse_args():
     is_restore = 0  # 恢复权重
 
     init_lr = 0.1  # 学习率
-    epochs = 10  # 训练回合数
+    epochs = 200  # 训练回合数
     batch_size = 250  # 一个批次的数据大小
 
     threshold = 0.001  # 权重剪枝阈值
